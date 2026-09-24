@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('penggunas', function (Blueprint $table) {
+            $table->string('phone')->nullable();
+            //
         });
-
-        //
     }
 
     /**
@@ -27,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('penggunas', function (Blueprint $table) {
+            $table->dropColumn('phone');
+            //
+        });
     }
 };

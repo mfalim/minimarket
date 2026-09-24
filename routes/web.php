@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\LaporanPenjualanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -61,6 +63,11 @@ Route::get('/produk-toko', function () {
     ];
     return view('daftar_produk', compact('produk'));
 });
+
+Route::get('/produk', [ProductController::class, 'index']);
+Route::get('/produk/{id}', [ProductController::class, 'show']);
+
+Route::get('/laporan', LaporanPenjualanController::class);
 
 // Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 
